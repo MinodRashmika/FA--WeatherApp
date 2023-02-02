@@ -12,10 +12,10 @@ function App() {
   return (
   <BrowserRouter>
 
-    <div>
+    {/* <div>
       <Link to="/single">Weather Card</Link>
       <Link to="/">Multi Card</Link>
-    </div>
+    </div> */}
 
     <Routes>
       <Route path = "/" element={<MultiCardUI/>}/>
