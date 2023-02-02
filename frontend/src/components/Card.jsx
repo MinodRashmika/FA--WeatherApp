@@ -6,7 +6,7 @@ const Card = (props) => {
             <div className="p-10">
             <div class="max-w-sm rounded overflow-hidden shadow-lg bg-gray-500 ">
               <div className="flex justify-center">
-                <img class="w-8/12 rounded mt-5" src="https://images.pexels.com/photos/47367/full-moon-moon-bright-sky-47367.jpeg" alt="Sunset in the mountains"/>  
+                <img class="w-full rounded mt-5" src="https://images.pexels.com/photos/47367/full-moon-moon-bright-sky-47367.jpeg" alt="Sunset in the mountains"/>  
               </div>
             <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
