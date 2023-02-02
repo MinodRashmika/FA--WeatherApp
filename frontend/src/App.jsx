@@ -7,7 +7,7 @@ import {WeatherCard, MultiCardUI} from './pages/index.jsx'
 
 function App() {
 
-  //const url = `https://api.openweathermap.org/data/2.5/weather?q=colombo&appid=f80449f90f34ca2091a328118b50dcd4`
+  //const url = `process.env.URL`
 
   return (
   <BrowserRouter>
