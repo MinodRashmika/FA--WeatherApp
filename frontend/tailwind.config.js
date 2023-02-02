@@ -5,7 +5,7 @@ module.exports = withMT({
   theme: {
     extend: {
       backgroundImage: {
-        'backdrop' : "url(./assets/LtS7Q.png)",
+        'backdrop' : "url(https://wallpapercave.com/wp/wp3194879.png)",
       },
     },
   },
