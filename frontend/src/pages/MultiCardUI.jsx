@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Footer, Card } from "../components/"
+import {Footer, Card } from "../components/"
 import newList from '../assets/data'
 
 
@@ -7,9 +7,11 @@ import newList from '../assets/data'
 const MultiCardUI = () => {
 
     const [searchTerm, setSearchTerm] = useState("");
+
+
     return (
       
-        <div className="app m-0 p-0 bg-backdrop bg-repeat bg-w-full bg-center bg-fixed min-h-full" >
+        <div className="app m-0 p-0 bg-backdrop bg-w-full bg-top bg-blend-darken bg-cover bg-fixed min-h-[100vh]" >
 
                 <div>
                     <h1 className="text-3xl flex justify-center pt-5">Weather App</h1>
@@ -29,10 +31,10 @@ const MultiCardUI = () => {
                     </div>
                 </div>
             </form>
-          <div className="grid grid-cols-1 gap-0 justify-items-center mx-12 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-0 justify-items-center mx-12 md:grid-cols-2 lg:grid-cols-3 min-h-[80vh]">
           {
             newList.filter((data) => {
-              if(searchTerm == ""){
+              if(searchTerm === ""){
                 return data;
               } else if (data.CityName.toString().toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())){
                 return data;
