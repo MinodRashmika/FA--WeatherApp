@@ -5,7 +5,7 @@ export default function footer() {
 
 <footer class="bg-gray-900 dark:bg-gray-900 w-full relative left-0 bottom-0 right-0 h-auto">
     <div class="px-4 py-6 bg-gray-700 dark:bg-gray-700 md:flex md:items-center md:justify-between">
-        <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2023 <a href="https://flowbite.com/">Flowbite™</a>. All Rights Reserved.
+        <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2023 <a href="https://github.com/MinodRashmika/">Minods Software™</a>. All Rights Reserved.
         </span>
         <div class="flex mt-4 space-x-6 sm:justify-center md:mt-0">
             <a href="#" class="text-gray-400 hover:hover:text-white dark:hover:text-white">
