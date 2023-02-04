@@ -55,7 +55,7 @@ const MultiCardUI = () => {
             newList.map(item => {
               return(
               <div>
-                <Card location = {item.CityName}/>
+                <Card location = {item.CityCode}/>
               </div>)
             })
           }
