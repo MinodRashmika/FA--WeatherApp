@@ -6,7 +6,7 @@ import newList from '../assets/data'
 
 const MultiCardUI = () => {
 
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState("");
     return (
       
         <div className="app m-0 p-0 bg-backdrop bg-repeat bg-w-full bg-center bg-fixed min-h-full" >
@@ -26,14 +26,13 @@ const MultiCardUI = () => {
                           setSearchTerm(e.target.value)
                         }} 
                         required/>
-                        <button type="submit" class="text-white right-2.5 bottom-2.5 order-2 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                     </div>
                 </div>
             </form>
           <div className="grid grid-cols-1 gap-0 justify-items-center mx-12 md:grid-cols-2 lg:grid-cols-3">
           {
             newList.filter((data) => {
-              if(searchTerm == ''){
+              if(searchTerm == ""){
                 return data;
               } else if (data.CityName.toString().toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())){
                 return data;
