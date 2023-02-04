@@ -18,9 +18,12 @@ const Card = (props) => {
     const[Sunrise, setSunrise] = useState('');
     const[Sunset, setSunset] = useState('');
 
+    const API_KEY = process.env.REACT_APP_API_KEY
 
 
-    var url = `https://api.openweathermap.org/data/2.5/weather?q=${props.location}&units=metric&appid=981d6e576e5fb2511ef89b408ce0a7fe`
+
+    
+    var url = `https://api.openweathermap.org/data/2.5/weather?id=${props.location}&units=metric&appid=${API_KEY}`
 
     const getData = () => {
         axios.get(url).then((res) => {
@@ -41,18 +44,18 @@ const Card = (props) => {
     return(
         <div>
             <div className="p-10">
-            <div class="max-w-lg max-h-lg rounded overflow-hidden shadow-lg bg-gray-800 ">
-                <div className="max-h-[200px] bg-white flex justify-center">
+            <div class="max-w-lg max-h-lg rounded overflow-hidden shadow-lg">
+                <div className="max-h-[200px] bg-white/20 flex justify-center">
                     <h1 className="text-black text-8xl flex justify-center">{Temp}</h1>
                     <h1 className="text-2xl text-black">Cº</h1>
                 </div>
-            <div class="px-6 py-4">
+            <div class="px-6 py-4  bg-black/80 ">
                 <div class="font-bold text-xl mb-2">{Name}</div>
-                <p class="text-black text-base">
+                <p class="text-white text-base">
                     {Desc}
                 </p>
               </div>
-              <div class="px-6 pt-4 pb-2">
+              <div class="px-6 pt-4 pb-2  bg-gray-800/50 ">
                 <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Pressure {Pressure}hPa</span>
                 <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Humidity {Humidity}% </span>
                 <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Visibility {Visibility}km</span>
