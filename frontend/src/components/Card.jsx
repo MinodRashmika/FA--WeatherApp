@@ -1,42 +1,61 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {useApi} from '../components/Custom-Hook'
+import {useCookies} from 'react-cookie'
 
 
 const Card = (props) => {
 
+    //const [cookies, setCookie] = useCookies([]);
 
+    // const handle = () => {
+    //   setCookie(`${cityCode}`, data, { path: '/' });
+    // };
+
+    const[dt, setDt] = useState('');
     const[Temp, setTemp] = useState('');
     const[Name, setName] = useState('');
     const[Desc, setDesc] = useState('');
-    const[Min, setMin] = useState('');
-    const[Max, setMax] = useState('');
     const[Pressure, setPressure] = useState('');
     const[Humidity, setHumidity] = useState('');
-    const[Visibility, setVisibility] = useState('');
-    const[Speed, setSpeed] = useState('');
-    const[Degrees, setDegrees] = useState('');
-    const[Sunrise, setSunrise] = useState('');
-    const[Sunset, setSunset] = useState('');
+
 
     const API_KEY = process.env.REACT_APP_API_KEY
     var url = `https://api.openweathermap.org/data/2.5/weather?id=${props.location}&units=metric&appid=${API_KEY}`
 
-    const getData = () => {
+    const setUNIXtime = (time) => {
+      let unix_timestamp = time
+
+      // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+      var date = new Date(unix_timestamp * 1000);
+      // Hours part from the timestamp
+      var hours = date.getHours();
+      // Minutes part from the timestamp
+      var minutes = "0" + date.getMinutes();
+      // Seconds part from the timestamp
+      var seconds = "0" + date.getSeconds();
+
+      // Will display time in 10:30:23 format
+      var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+      return formattedTime
+    }
+
+    const getData = async () => {
         axios.get(url).then((res) => {
             setName(res.data.name)
             setTemp(res.data.main.temp)
             setDesc(res.data.weather[0].description)
             setPressure(res.data.main.pressure)
             setHumidity(res.data.main.humidity)
-            setVisibility(res.data.visibility)
+            setDt(res.data.dt)
           })
     }
 
 
     useEffect(() => {
         getData();
-      },[])
+      },[[]])
+
 
     return(
         <div>
@@ -55,7 +74,7 @@ const Card = (props) => {
               <div class="px-6 pt-4 pb-2  bg-gray-800/50 ">
                 <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Pressure {Pressure}hPa</span>
                 <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Humidity {Humidity}% </span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Visibility {Visibility}km</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last Update {setUNIXtime(dt)}</span>
               </div>
             </div>
           </div>
