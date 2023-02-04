@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {useApi} from '../components/Custom-Hook'
 
 
 const Card = (props) => {
@@ -19,10 +20,6 @@ const Card = (props) => {
     const[Sunset, setSunset] = useState('');
 
     const API_KEY = process.env.REACT_APP_API_KEY
-
-
-
-    
     var url = `https://api.openweathermap.org/data/2.5/weather?id=${props.location}&units=metric&appid=${API_KEY}`
 
     const getData = () => {
