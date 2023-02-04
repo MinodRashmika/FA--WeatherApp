@@ -1,58 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Footer, Card } from "../components/"
+import newList from '../assets/data'
+
+
 
 const MultiCardUI = () => {
 
-  var newList = [
-    {"CityCode":"1248991","CityName":"Colombo","Temp":"33.0","Status":"Clouds"},
-    {"CityCode":"1850147","CityName":"Tokyo","Temp":"8.6","Status":"Clear"},
-    {"CityCode":"2644210","CityName":"Liverpool","Temp":"16.5","Status":"Rain"},
-    {"CityCode":"2988507","CityName":"Paris","Temp":"22.4","Status":"Clear"},
-    {"CityCode":"2147714","CityName":"Sydney","Temp":"27.3","Status":"Rain"},
-    {"CityCode":"4930956","CityName":"Boston","Temp":"4.2","Status":"Mist"},
-    {"CityCode":"1796236","CityName":"Shanghai","Temp":"10.1","Status":"Clouds"},
-    {"CityCode":"3143244","CityName":"Oslo","Temp":"-3.9","Status":"Clear"}]
-
-  
-  // const[location, setLocation] = useState('');
-  // const[weatherData, setData] = useState('');
-
-  
-  // const setLocations = (loc) => {
-  //   setLocation(loc)
-  // }
-
-  // useEffect(() => {
-  //   setLocation('');
-  // },[])
-
-  // var url = '';
-
-  // const setURL = () => {
-  //   url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=981d6e576e5fb2511ef89b408ce0a7fe`
-  // }
-  
-  // const getData = () => {
-  //   setURL()
-  //   axios.get(url).then((res) => {
-  //     setData(res.data)
-  //   })
-  // }
-  
-  // useEffect(() => {
-  //   getData();
-  // },[])
-
+    const [searchTerm, setSearchTerm] = useState('');
     return (
       
         <div className="app m-0 p-0 bg-backdrop bg-repeat bg-w-full bg-center bg-fixed min-h-full" >
 
-          <Navbar/>
-
-
+                <div>
+                    <h1 className="text-3xl flex justify-center pt-5">Weather App</h1>
+                </div>
+            <form>
+                <label for="default-search" class="mb-2 text-sm font-medium text-white sr-only dark:text-white">Search</label>
+                <div class="relative flex justify-between">
+                    <div className="w-6/12 flex items-center mx-auto mt-5">
+                        <div class="relative inset-y-0 left-8 flex items-center pl-3 pointer-events-none ">
+                            <svg aria-hidden="true" class="w-5 h-5 text-gray-400 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <input type="search" id="default-search" class="flex mr-5 w-full p-4 pl-10 order-1 text-sm text-white border border-gray-600 rounded-lg bg-gray-700 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Cities..." 
+                        onChange={(e) => {
+                          setSearchTerm(e.target.value)
+                        }} 
+                        required/>
+                        <button type="submit" class="text-white right-2.5 bottom-2.5 order-2 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                    </div>
+                </div>
+            </form>
           <div className="grid grid-cols-1 gap-0 justify-items-center mx-12 md:grid-cols-2 lg:grid-cols-3">
           {
-            newList.map(item => {
+            newList.filter((data) => {
+              if(searchTerm == ''){
+                return data;
+              } else if (data.CityName.toString().toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())){
+                return data;
+              }
+            }).map(item => {
               return(
               <div>
                 <Card location = {item.CityCode}/>
@@ -61,17 +47,6 @@ const MultiCardUI = () => {
           }
 
           </div>  
-
-
-          {/*           
-          <div className="grid grid-cols-1 gap-0 justify-items-center mx-12 md:grid-cols-2">
-            <div><Card name={weatherData.name} desc = {weatherData.weather[0].description} temp = {weatherData.main.temp}/></div>
-            <div><Card location='Kuala Lampur'/></div>
-            <div><Card location='New Delhi'/></div>
-            <div><Card location='Singapore'/></div>
-            <div><Card location='Philadelphia'/></div>
-
-          </div> */}
 
           <Footer />
         </div>
