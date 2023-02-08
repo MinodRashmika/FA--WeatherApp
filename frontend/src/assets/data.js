@@ -9,3 +9,11 @@ const newList = [
     {"CityCode":"3143244","CityName":"Oslo","Temp":"-3.9","Status":"Clear"}];
 
     export default newList;
+
+    // const[dt, setDt] = useState('');
+    // const[Temp, setTemp] = useState('');
+    // const[Name, setName] = useState('');
+    // const[Desc, setDesc] = useState('');
+    // const[Pressure, setPressure] = useState('');
+    // const[Humidity, setHumidity] = useState('');
+    // const[data, setData] = useState([]);
